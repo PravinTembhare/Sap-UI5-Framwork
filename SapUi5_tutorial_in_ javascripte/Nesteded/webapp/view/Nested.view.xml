@@ -1,0 +1,68 @@
+<mvc:View
+controllerName="ui5.walkthrough.controller.Nested"
+xmlns="sap.m"
+xmlns:form="sap.ui.layout.form"
+xmlns:l="sap.ui.layout"
+xmlns:mvc="sap.ui.core.mvc"
+>
+ <Panel headerText="{i18n>helloPanelTitle}"
+                               class="sapUiResponsiveMargin" 
+                               width="auto"
+                               >
+                               <content>
+                               <form:SimpleForm editable="true" layout="ColumnLayout">
+			<Label text="{i18n>firstName}"/>
+			<Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+			<Label text="{i18n>lastName}"/>
+			<Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+			<Label text="{i18n>enabled}"/>
+			<CheckBox selected="{/enabled}"/>
+		</form:SimpleForm>
+                               <Label labelFor="address" text="{i18n>address}:"/>
+				<FormattedText class="sapUiSmallMarginBottom"
+					htmlText="{/address/street}&lt;br>{/address/zip} {/address/city}&lt;br>{/address/country}"
+					id="address" width="200px"/>
+                               <button
+                               id="helloDialogButton"
+                               icon="sap-icon://world"
+                               text="{i18n>openDialogButtonText}"
+                               press=".onOpenDialog"
+                               class="sapUiSmallMarginEnd"/>
+                                        <button
+                                         text="{i18n>showHelloButtontext}"
+                                         
+                                         press=".onShowHello"
+                                         class="myCustomButton"
+                                          />
+                                             <Input
+                                              id="input"
+                                              value="{/recipient/name}"
+                                              description="Hello {/recipient/name}"
+                                              valueLiveUpdate="true"
+                                              width="60%"/> 
+                                                          <FormattedText  
+                                                          htmlText="Hello {/recipient/name}"
+                                                          
+                                                            />
+                                                            <Link href="{
+						parts: [
+							'/firstName',
+							'/lastName'
+						],
+						formatter: '.formatMail'
+					}"
+					text="{i18n>sendEmail}"/>
+                        </content>
+                                </Panel>
+
+
+
+
+
+
+
+
+
+
+
+</mvc:View>

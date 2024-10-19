@@ -26,10 +26,20 @@ xmlns:mvc="sap.ui.core.mvc"
                                               description="Hello {/recipient/name}"
                                               valueLiveUpdate="true"
                                               width="60%"/> 
-                                                          <FormattedText  
-                                                          htmlText="Hello {/recipient/name}"
-                                                           class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"
-                                                            />
+                                                         <l:VerticalLayout>
+				<Label labelFor="address" text="{i18n>address}:"/>
+				<FormattedText class="sapUiSmallMarginBottom"
+					htmlText="{/address/street}&lt;br>{/address/zip} {/address/city}&lt;br>{/address/country}"
+					id="address" width="200px"/>
+				<Link href="{
+						parts: [
+							'/firstName',
+							'/lastName'
+						],
+						formatter: '.formatMail'
+					}"
+					text="{i18n>sendEmail}"/>
+			</l:VerticalLayout>
                         </content>
                                 </Panel>
 
